@@ -1,0 +1,119 @@
+<html>
+    <head>
+       
+        <title>Registration page</title>
+    </head>
+    <body>
+         <p class="text-center fs-3" ngClass="isAccountCreated ? 'text-sucess pb-1' : 'text-danger pb-1'">
+                {{displayMsg}}
+        </p>
+        <div class="container">
+           
+        
+      <form [formGroup] = "registrationForm" class="border border-dark p-3" (ngSubmit)="RegisterUser(); GenerateUsername()">
+        
+            <div class="row g-0">
+                <div class="col heading p-2 mb-3 text-center ">
+                    <p class="fs-2 text-dark font-weight-bolder">Registration</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">FirstName</label>
+                    <input type="text" class="form-control"  formControlName="firstname">
+                    <span *ngIf="fname.errors?.['required'] && fname?.touched">
+                        Firstname is required
+                    </span>
+                    <span *ngIf="fname.errors?.['minlength']">
+                        Name to short
+                    </span>
+                    <span *ngIf="fname.errors?.['pattern'] && fname.touched">
+                        Enter valid name
+                    </span>
+                    
+                    
+                    
+                </div>
+                <div class="col">
+                    <label class="form-label">LastName</label>
+                    <input type="text" class="form-control" formControlName="lastname">
+                    <span *ngIf="lname.errors?.['required'] && lname.touched">
+                        Lastname is required
+                    </span>
+                    <span *ngIf="fname.errors?.['pattern'] && fname.touched">
+                        Enter valid name
+                    </span>
+                    
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">EmailID</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <span *ngIf="email.errors?.['pattern'] && email.touched">
+                        Email not valid
+                    </span>
+                    
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Username</label><br>
+                    <input type="text" class="form-control" readonly formControlName="username" value={{GenerateUsername()}}>
+                </div>
+            </div>
+            
+                
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="password" (change)="checkReEnteredPassword()">
+                        <span *ngIf="password.errors?.['required'] && password.touched">
+                            Password is required
+                        </span>
+                        <span *ngIf="password.errors?.['pattern']">
+                            Password must be minimum of eight characters one letter,one number,one special character
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="Password" class="form-control" formControlName="confirm_password" (change)="checkReEnteredPassword()">
+                        <span *ngIf="confirmpassword.errors?.['required'] && confirmpassword.touched">Confirm password is required</span>
+                        <span *ngIf="confirmpassword.errors?.['passwordMisMatch']">
+                            Password and Confirmpassword should be same
+                        </span>
+                        <span *ngIf="confirmpassword.errors?.['passwordEmpty']">
+                            Please fill the password field first
+                        </span>
+                        <!-- <span *ngIf="confirmpassword.errors?.['pattern']">
+                            Both passwords should be same
+                        </span> -->
+                    </div>
+                </div>
+
+                <div class="row pb-3">
+                    <div class="col-6 offset-3">
+                        <div class="d-grid">
+                            <button [disabled]="registrationForm.invalid" class="btn btn-dark text-dark" routerLink="/login">Register</button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+          
+
+            <a routerLink="/login">Already registered?Cliclk here</a>
+        </form>
+      
+    </div>
+
+      
+      
+    </body>
+</html>

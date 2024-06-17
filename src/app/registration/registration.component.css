@@ -1,0 +1,41 @@
+form{
+    width: 510px;
+    border-radius: 20px;
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+span{
+    color: red;
+}
+
+
+
+
+body
+{
+    background-color: #DFDFDE;
+    
+}
+
+.heading{
+    background-color: #8D8DAA;
+    
+}
+
+.border{
+    
+    box-shadow: 10px 10px 5px lightblue;
+}
+
+.btn-dark
+{
+    background-color: #8D8DAA;
+}
+

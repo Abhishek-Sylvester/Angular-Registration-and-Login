@@ -1,0 +1,47 @@
+<div class="container">
+    <form [formGroup]="loginForm"  class="border border-dark p-3" (ngSubmit)="loginSubmitted()">
+        <div class="row g-0">
+            <div class="col bg-dark p-2 mb-3 text-center">
+                <p class="fs-3 text-light">Login</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="form-label">EmailID</label>
+                <input type="text" class="form-control"  formControlName="email">
+                <span *ngIf="email.errors?.['required'] && email.touched">
+                    Email required
+                </span>
+                <span *ngIf="email.errors?.['pattern']">
+                    Invalid email
+                </span>
+    
+            </div>
+        </div>
+        <div class="row pb-3">
+            <div class="col">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control"  formControlName="password">
+                <span *ngIf="password.errors?.['required'] && password.touched">
+                    password required
+                </span>
+                <span *ngIf="password.errors?.['pattern']">
+                    Invalid password
+                </span>
+    
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="d-grid">
+                    <button [disabled]="loginForm.invalid" class="btn btn-dark">Login</button>
+                </div>
+            </div>
+
+        </div>
+        <a routerLink="/registration">Not registered yet?Click here</a>
+    </form>
+    
+</div>
+
+
